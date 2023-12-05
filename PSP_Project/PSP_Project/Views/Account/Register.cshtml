@@ -1,0 +1,38 @@
+﻿@model PSP_Project.ViewModels.RegisterModel
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="~/css/style.css">
+    <link rel="icon" href="http://vladmaxi.net/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="http://vladmaxi.net/favicon.ico" type="image/x-icon">
+</head>
+
+<form class="form-signin" asp-action="Register" asp-controller="Account" asp-anti-forgery="true">
+    @*<div class="validation" asp-validation-summary="ModelOnly"></div>*@
+    <h1 class="h3 mb-3 text-white">Регистрация</h1>
+    @if (!Html.ViewData.ModelState.IsValid)
+    {
+        <div class="alert alert-danger">
+            @Html.ValidationSummary()
+        </div>
+    }
+    <fieldset id="inputs">
+        <div class="form-label-group">
+            <input asp-for="Email" id="inputEmail" class="form-control" type="email" placeholder="Логин" />
+            <label for="inputEmail">Логин</label>
+        </div>
+        <div class="form-label-group">
+            <input asp-for="Password" id="inputPassword" class="form-control" type="password" placeholder="Пароль" />
+            <label for="inputPassword">Пароль</label>
+        </div>
+        <div class="form-label-group">
+            <input asp-for="ConfirmPassword" id="inputPassword" class="form-control" type="password" placeholder="Повторите пароль" />
+            <label for="inputPassword">Повторите пароль</label>
+        </div>
+    </fieldset>
+
+    <fieldset id="actions">
+        <input type="submit" id="submit" class="btn btn-lg btn-secondary btn-block" value="Зарегистрироваться" />
+    </fieldset>
+</form>
+<a asp-action="Login" asp-controller="Account" style="font-size:25px;">Уже зарегистрированы? Войти</a>

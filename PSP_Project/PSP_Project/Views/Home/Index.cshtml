@@ -1,0 +1,17 @@
+﻿@{
+    ViewData["Title"] = "Главная страница";
+}
+<div class="text-center">
+    <h1 class="display-4 title cover-heading">Website</h1>
+    <p class="display-4 title">Реализация регистрации и логинизации</p>
+    @if (User.Identity.IsAuthenticated)
+    {
+         <div class="display-4 mb-4">Добро пожаловать, @Html.ViewContext.HttpContext.User.Identity.Name!</div>
+        <img height="300" src="../images/helicopter.jpg" />
+    }
+    else
+    {
+        <h1 class="display-4" style="margin-bottom:30px">Зарегистрируйтесь!</h1>
+        <a class="btn btn-lg btn-secondary w-25" asp-controller="Account" asp-action="Register">Регистрация</a>
+    }
+</div>

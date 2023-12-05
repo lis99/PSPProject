@@ -1,0 +1,33 @@
+﻿@model PSP_Project.ViewModels.LoginModel
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="~/css/style.css">
+</head>
+
+<form class="form-signin" id="login" asp-action="Login" asp-controller="Account" asp-anti-forgery="true">
+    <h1 class="h3 mb-3 text-white">Авторизация</h1>
+    @if (!Html.ViewData.ModelState.IsValid)
+    {
+        <div class="alert alert-danger">
+            @Html.ValidationSummary()
+        </div>
+    }
+    <div>
+        <fieldset id="inputs">
+            <div class="form-label-group">
+                <input asp-for="Email" id="inputEmail" class="form-control" type="email" placeholder="Логин" />
+                <label for="inputEmail">Логин</label>
+            </div>
+            <div class="form-label-group">
+                <input asp-for="Password" id="inputPassword" class="form-control" type="password" placeholder="Пароль" />
+                <label for="inputPassword">Пароль</label>
+            </div>
+        </fieldset>
+
+        <fieldset id="actions">
+            <input class="btn btn-lg btn-secondary btn-block" type="submit" id="submit" value="Войти" />
+        </fieldset>
+    </div>
+</form>
+<a asp-action="Register" asp-controller="Account" style="font-size:25px; margin-top:20px">Еще не зарегистрированы? Регистрация</a>
